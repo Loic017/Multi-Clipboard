@@ -1,0 +1,4 @@
+{
+  "A": "key = input(\"Enter Key\")\r\n        data[key] = clipboard.paste()",
+  "B": ":"
+}
