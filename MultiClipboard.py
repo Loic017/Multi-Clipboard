@@ -23,14 +23,22 @@ if len(sys.argv) == 2:
     
     if command == "save":
         key = input("Enter Key >> ")
-        data[key] = clipboard.paste()
-        save_data(SAVED_DATA, data)
+        if key not in data:
+            data[key] = clipboard.paste()
+            save_data(SAVED_DATA, data)
+            print(f"Clipboard has been saved with the key {key}.")
+        else:
+            print(f"The key {key} already exists.")
     elif command == "load":
-        #key = input("Enter Key")
-        #clipboard.copy(key)
-        pass
+        key = input("Enter Key >> ")
+        if key in data:
+            clipboard.copy(data[key])
+            print(f"Copied data.")
+        else:
+            print(f"The key {key} does not exist.")
     elif command == "list":
-        pass
+        for i in data:
+            print(f"{i}: {data[i]}")
     else:
         print("Unknown Command.")
 else:
